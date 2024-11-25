@@ -1,0 +1,103 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    background: linear-gradient(135deg, #a8edea, #fed6e3);
+    color: #34495e;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+}
+h1 {
+    font-size: 2.8rem;
+    color: #2c3e50;
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px #8ecca7;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+h1::before {
+    content: url('https://img.icons8.com/external-soft-fill-juicy-fish/60/external-graduation-cap-education-soft-fill-soft-fill-juicy-fish.png');
+    display: inline-block;
+}
+
+p {
+    font-size: 1.2rem;
+    margin: 0.5rem 0;
+}
+
+input[type="number"] {
+    padding: 10px;
+    font-size: 1rem;
+    border: 2px solid #74b49b;
+    border-radius: 5px;
+    width: 150px;
+    outline: none;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+input[type="number"]:focus {
+    border-color: #4aa96c;
+    box-shadow: 0 0 8px rgba(74, 169, 108, 0.5);
+}
+
+button {
+    background-color: #4aa96c;
+    color: white;
+    padding: 10px 20px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+button:hover {
+    background-color: #397d55;
+    transform: scale(1.05);
+}
+
+button:active {
+    transform: scale(1);
+}
+#result {
+    margin-top: 1rem;
+    font-size: 1rem;
+    color: #2c3e50;
+    background: #e8f9e9;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: fit-content;
+    text-align: center;
+    border: 2px solid #4aa96c;
+    position: relative;
+    animation: fadeIn 0.5s ease-out;
+}
+
+#result::before {
+    content: url('https://img.icons8.com/fluency/48/trophy.png');
+    position: absolute;
+    top: 55px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: white;
+    border-radius: 50%;
+    padding: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

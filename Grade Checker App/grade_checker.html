@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<link rel="stylesheet" href="grade_checker.css">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grade Calculator</title>
+</head>
+<body>
+    <h1>Grade Calculator</h1>
+    <p>Enter the percentage you earned:</p>
+    <input type="number" id="percentage" min="0" max="100" placeholder="0-100%">
+    <button onclick="calculate_grade()">Check your grade now!</button>
+    <p id="result"></p>
+    <!--
+    Skala ocen: 
+    niedostateczny(1): <= 39% 
+    dopuszczający(2): 40 - 50 
+    dopuszczający plus (2+): 51 - 54 
+    dostateczny(3): 55 - 65 
+    dostateczny plus (3+): 66 - 70 
+    dobry(4): 71 - 80 
+    dobry plus (4+): 81 - 84 
+    bardzo dobry(5): 85 - 99 
+    celujący(6): 100 >=
+    -->
+<script>
+    function calculate_grade() {
+        const percentage = parseInt(document.getElementById("percentage").value);
+        let grade;
+
+        if (isNaN(percentage) || percentage < 0 || percentage > 100) {
+            alert("Please enter a valid percentage between 0 and 100.");
+            return;
+        }
+        if (percentage >= 100) {
+            grade = "celujący (6)";
+        } else if (percentage >= 85) {
+            grade = "bardzo dobry (5)";
+        } else if (percentage >= 81) {
+            grade = "dobry plus (4+)";
+        } else if (percentage >= 71) {
+            grade = "dobry (4)";
+        } else if (percentage >= 66) {
+            grade = "dostateczny plus (3+)";
+        } else if (percentage >= 55) {
+            grade = "dostateczny (3)";
+        } else if (percentage >= 51) {
+            grade = "dopuszczający plus (2+)";
+        } else if (percentage >= 40) {
+            grade = "dopuszczający (2)";
+        } else {
+            grade = "niedostateczny (1)";
+        }
+        //show grade
+        document.getElementById("result").innerHTML = `For ${percentage}%, the grade is: ${grade}`;
+    }
+</script>
+</body>
+</html>

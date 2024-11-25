@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<link rel="stylesheet" href="guessing_game.css">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guessing Game</title>
+</head>
+<body>
+    <h1>Guessing Game</h1>
+    <p>Guess a number between 100 and 200:</p>
+    <input type="number" id="user_guess" min="100" max="200">
+    <button onclick="check_guess()">Submit Guess</button>
+    <p id="result"></p>
+
+<script>
+    let guessed_numbers = [];
+    let random_number = Math.floor(Math.random() * 100) + 100;
+    
+    function check_guess() {
+        let user_guess;
+
+        // Check if user provided input via the text box
+        if (document.getElementById("user_guess").value) {
+            user_guess = parseInt(document.getElementById("user_guess").value);
+        } else {
+            // If no input in the text box, use prompt
+            user_guess = parseInt(prompt("Enter a number between 100 and 200:"));
+        }
+
+        // Validate input
+        if (isNaN(user_guess) || user_guess < 100 || user_guess > 200) {
+            alert("Please enter a valid number between 100 and 200.");
+            return;
+        }
+
+        guessed_numbers.push(user_guess);
+
+        // Check the guess
+        if (user_guess === random_number) {
+            alert(`Congratulations! You guessed the correct number: ${random_number}`);
+            document.getElementById("result").innerHTML = "Congratulations! You guessed the correct number!";
+        } else {
+            if (user_guess > random_number) {
+                alert("Your guess is too high.");
+                document.getElementById("result").innerHTML = "Your guess is higher than the correct number.";
+            } else {
+                alert("Your guess is too low.");
+                document.getElementById("result").innerHTML = "Your guess is lower than the correct number.";
+            }
+            document.getElementById("result").innerHTML += "<br>Please try again!";
+        }
+
+        // Display previous guesses
+        document.getElementById("result").innerHTML += "<br>Previous guesses: " + guessed_numbers.join(", ");
+        document.getElementById("user_guess").value = ""; // Clear input field
+    }
+</script>
+</body>
+</html>
